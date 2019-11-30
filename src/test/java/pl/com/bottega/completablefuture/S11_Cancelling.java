@@ -1,7 +1,7 @@
-package com.nurkiewicz.reactive;
+package pl.com.bottega.completablefuture;
 
-import com.nurkiewicz.reactive.util.AbstractFuturesTest;
-import com.nurkiewicz.reactive.util.InterruptibleTask;
+import pl.com.bottega.completablefuture.util.AbstractFuturesTest;
+import pl.com.bottega.completablefuture.util.InterruptibleTask;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;

@@ -1,13 +1,18 @@
-package com.nurkiewicz.reactive.util;
+package pl.com.bottega.completablefuture.util;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.nurkiewicz.reactive.stackoverflow.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.com.bottega.completablefuture.stackoverflow.ArtificialSleepWrapper;
+import pl.com.bottega.completablefuture.stackoverflow.FallbackStubClient;
+import pl.com.bottega.completablefuture.stackoverflow.HttpStackOverflowClient;
+import pl.com.bottega.completablefuture.stackoverflow.InjectErrorsWrapper;
+import pl.com.bottega.completablefuture.stackoverflow.LoggingWrapper;
+import pl.com.bottega.completablefuture.stackoverflow.StackOverflowClient;
 
 import java.util.concurrent.*;
 

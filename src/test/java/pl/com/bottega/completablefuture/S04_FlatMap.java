@@ -1,7 +1,7 @@
-package com.nurkiewicz.reactive;
+package pl.com.bottega.completablefuture;
 
-import com.nurkiewicz.reactive.stackoverflow.Question;
-import com.nurkiewicz.reactive.util.AbstractFuturesTest;
+import pl.com.bottega.completablefuture.stackoverflow.Question;
+import pl.com.bottega.completablefuture.util.AbstractFuturesTest;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 import org.slf4j.Logger;

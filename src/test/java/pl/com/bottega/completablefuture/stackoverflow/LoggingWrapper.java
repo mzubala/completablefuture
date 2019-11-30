@@ -1,4 +1,4 @@
-package com.nurkiewicz.reactive.stackoverflow;
+package pl.com.bottega.completablefuture.stackoverflow;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;

@@ -1,12 +1,12 @@
-package com.nurkiewicz.reactive;
+package pl.com.bottega.completablefuture;
 
-import com.nurkiewicz.reactive.util.AbstractFuturesTest;
-import com.nurkiewicz.reactive.util.Futures;
+import io.reactivex.Observable;
+import pl.com.bottega.completablefuture.util.AbstractFuturesTest;
 import org.junit.Test;
-import rx.Observable;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,10 +21,10 @@ public class S12_RxJava extends AbstractFuturesTest {
 		CompletableFuture<String> future = CompletableFuture.completedFuture("Abc");
 
 		//when
-		Observable<String> observable = Futures.toObservable(future);
+		Observable<String> observable = Observable.fromFuture(future);
 
 		//then
-		assertThat(observable.toList().toBlocking().single()).containsExactly("Abc");
+		assertThat(observable.toList().blockingGet()).containsExactly("Abc");
 	}
 
 	@Test
@@ -33,15 +33,14 @@ public class S12_RxJava extends AbstractFuturesTest {
 		CompletableFuture<String> future = failedFuture(new IllegalStateException(MSG));
 
 		//when
-		Observable<String> observable = Futures.toObservable(future);
+		Observable<String> observable = Observable.fromFuture(future);
 
 		//then
 		final List<String> result = observable
 				.onErrorReturn(Throwable::getMessage)
 				.toList()
-				.toBlocking()
-				.single();
-		assertThat(result).containsExactly(MSG);
+				.blockingGet();
+		assertThat(result.get(0)).contains(MSG);
 	}
 
 	@Test
@@ -50,7 +49,7 @@ public class S12_RxJava extends AbstractFuturesTest {
 		Observable<Integer> observable = Observable.just(1, 2, 3);
 
 		//when
-		CompletableFuture<List<Integer>> future = Futures.fromObservable(observable);
+		Future<List<Integer>> future = observable.toList().toFuture();
 
 		//then
 		assertThat(future.get(1, SECONDS)).containsExactly(1, 2, 3);
@@ -62,7 +61,7 @@ public class S12_RxJava extends AbstractFuturesTest {
 		Observable<Integer> observable = Observable.just(1);
 
 		//when
-		CompletableFuture<Integer> future = Futures.fromSingleObservable(observable);
+		Future<Integer> future = observable.toFuture();
 
 		//then
 		assertThat(future.get(1, SECONDS)).isEqualTo(1);
@@ -73,7 +72,5 @@ public class S12_RxJava extends AbstractFuturesTest {
 		future.completeExceptionally(error);
 		return future;
 	}
-
-
 }
 

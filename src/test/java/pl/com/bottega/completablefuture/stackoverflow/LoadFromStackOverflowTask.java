@@ -1,4 +1,4 @@
-package com.nurkiewicz.reactive.stackoverflow;
+package pl.com.bottega.completablefuture.stackoverflow;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

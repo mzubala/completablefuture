@@ -1,7 +1,7 @@
-package com.nurkiewicz.reactive;
+package pl.com.bottega.completablefuture;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.nurkiewicz.reactive.util.AbstractFuturesTest;
+import pl.com.bottega.completablefuture.util.AbstractFuturesTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
